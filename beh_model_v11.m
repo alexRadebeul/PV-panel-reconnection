@@ -5,11 +5,15 @@
 % PV-graphs in image form (.png)
 % For a full explanation of the working of this algorithm please refer to
 % my master thesis available at ....
-
+%
 % Author: Alexander Eick
 % e-mail: alexander.eick@outlook.de
-% Release: 1
-% Release date: 09/10/2017
+% Release: 2
+% Release date: 17/11/2017
+
+% This code is publish under the GNU GPL Version 3
+% When reusing the code please mention the source
+
 
 tic
 
@@ -399,16 +403,21 @@ for si = 1:size(simulation,2)%si --> simulation counter
         plot(OutputWithin(i,9:end),OutputWithin(i+1,9:end),'-g');
         plot(OutputWithin(i,8),OutputWithin(i,7),'*g');
     end
+    p6 = plot(OutputWithin(1,9:end),OutputWithin(2,9:end));
+    p7 = plot(OutputWithin(1,8),OutputWithin(1,7));
+    set(p6,'Color',[1 0.65 0]);
+    set(p7,'MarkerEdgeColor',[1 0.65 0],'MarkerFaceColor',[1 0.65 0],'Marker','*');
     p1 = plot(sIV(:,1),sIV(:,2),'-r');
     plot(sVm,sIm,'*r');
     p4 = plot(lower_lim(:,1),lower_lim(:,2),'-m');
     p5 = plot(upper_lim(:,1),upper_lim(:,2),'-m');
 
-    legend( [p1 p4 p3 p2] , ...
+    legend( [p1 p4 p3 p2 p6] , ...
         'standard configuration of Ns=12 & Np=3' , ...
         'lower & upper margin to standard Vm' , ...
         'configurations with Vm within the margin' , ...
         'configurations with Vm outside of the margin' , ...
+        'shaded standard configuration', ...
         'location','northeast');
     ylabel('Current (A)')
     xlabel('Voltage (V)')
@@ -440,6 +449,10 @@ for si = 1:size(simulation,2)%si --> simulation counter
             plot(OutputWithinP(i_fig,8),OutputWithinP(i_fig,6),'*c');
         end
     end
+    p9 = plot(OutputWithin(1,9:end),OutputWithin(2,9:end).*OutputWithin(1,9:end));
+    p10 = plot(OutputWithin(1,8),OutputWithin(1,7).*OutputWithin(1,8));
+    set(p9,'Color',[1 0.65 0]);
+    set(p10,'MarkerEdgeColor',[1 0.65 0],'MarkerFaceColor',[1 0.65 0],'Marker','*');
     p1 = plot(sIV(:,1),sIV(:,2).*sIV(:,1),'-r');
     plot(sVm,sIm*sVm,'*r');
     p4 = plot(lower_lim(:,1),lower_lim(:,2),'-m');
@@ -447,12 +460,13 @@ for si = 1:size(simulation,2)%si --> simulation counter
     p6 = plot(lower_P_lim(:,1),lower_P_lim(:,2),'-m');
     p7 = plot(upper_P_lim(:,1),upper_P_lim(:,2),'-m');
     
-    legend( [p1 p4 p3 p8 p2] , ...
+    legend( [p1 p4 p3 p8 p2 p9] , ...
         'standard configuration of Ns=12 & Np=3' , ...
         'lower & upper margins to standard Vm & Pm' , ...
         'configurations with Vm within the margin' , ...
         'configurations with Pm within the margin' , ...
         'configurations with Vm outside of the margin' , ...
+        'shaded standard configuration', ...
         'location','northeast');
     ylabel('Power (W)')
     xlabel('Voltage (V)')
