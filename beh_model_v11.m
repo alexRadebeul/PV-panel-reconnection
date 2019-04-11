@@ -67,7 +67,7 @@ simulation = [  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
                 .5 .5 .5 .5 .5 .5 .5 .5 1  .5 .5 .5 .5 .5 .5 .5 .5 1  .5 .5 .5 .5 .5 .5 .5 .5 1  .5 .5 .5 .5 .5 .5 .5 .5 1;
                 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5];
 simulation = simulation.';
-ovName = 'results/results v11/results_v11_0_overall.txt'; 
+ovName = 'results/results_v11_0_overall.txt'; 
 ovFile = fopen(ovName,'a');
 for si = 1:size(simulation,2)%si --> simulation counter
     si
@@ -75,7 +75,7 @@ for si = 1:size(simulation,2)%si --> simulation counter
     margin = 0.2;%margin of Vm to determine best configuration after shading
     shade = 1;%500 - half shaded; 1 - fully shaded
     shade2 = 500;
-    fName = sprintf('results/results v11/results_v11_%d',si);
+    fName = sprintf('results/results_v11_%d',si);
     Parameters = zeros(Nc,14);  %initialize with 0 values %% [G, Ta, Tc, Vt,
                                 %Isc, Voc, Im, Vm, I0, Rs, Neighbor north,
                                 %Neighbor east, Neighbor south, Neighbor west]
